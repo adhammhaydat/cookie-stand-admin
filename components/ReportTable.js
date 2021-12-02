@@ -1,6 +1,6 @@
 import { hourly_sales, date_sales } from "../data.js";
 import { useState, useEffect } from "react";
-export default function Report_table(props) {
+export default function Report_table({resources, deleteResource}) {
   const [total, setTotal] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   ]);
@@ -13,23 +13,23 @@ export default function Report_table(props) {
   const [sumTotal, setSom] = useState([0]);
   
   useEffect(() => {
-    if (props.cookies.length > 0) {
+    if (resources.length > 0) {
       let oldTotals = total.map((element, idx) => {
         return (element = element + hourly_sales[idx]);
       });
       setTotal(oldTotals);
       
     }
-  }, [props.cookies]);
+  }, [resources]);
 
   useEffect(() => {
-    if (props.cookies.length > 0) {
+    if (resources.length > 0) {
       let oldTotals = sumTotal.map((element, idx) => {
         return (element = element + sum);
       });
       setSom(oldTotals);
     }
-  }, [props.cookies]);
+  }, [resources]);
 
   return (
     <div className="w-5/6 mx-auto mt-4 ">
@@ -38,9 +38,9 @@ export default function Report_table(props) {
           <tr className="bg-green-500 border border-black">
             <th className="border border-collapse border-black ">Location</th>
 
-            {date_sales.map((ele) => {
+            {date_sales.map((ele,idx) => {
               return (
-                <th className="border border-black " key={ele}>
+                <th className="border border-black " key={idx}>
                   {ele}
                 </th>
               );
@@ -51,13 +51,14 @@ export default function Report_table(props) {
         </thead>
 
         <tbody>
-            
-          {props.cookies.map((items,idx) => {
+
+          {resources.map((items,idx) => {
               const flag = (
                 <>
-                
-                  <td className="p-2 border border-black w-14" key={items}>
+
+                  <td className="p-2 border border-black w-14" key={idx}>
                     {items.location}
+                    <span  onClick={(e)=>{deleteResource(items.id)}}>[x]</span>
                   </td>
                   {hourly_sales.map((ele) => {
                     return (

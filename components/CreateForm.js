@@ -1,14 +1,16 @@
 
-export default function CreateForm(props) {
-    function submitHandler(e) {
+export default function CreateForm({createResource}) {
+    
+  function submitHandler(e) {
         e.preventDefault();
         let stand={
+          name:'adham',
           location:e.target.location.value,
           minimum_customers_per_hour :e.target.min.value,
           maximum_customers_per_hour:e.target.max.value,
           average_cookies_per_sale:e.target.avg.value
         }
-        props.handlCreate(stand)
+        createResource(stand)
         e.target.reset();
         
       }
