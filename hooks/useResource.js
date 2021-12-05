@@ -1,7 +1,7 @@
 import axios from 'axios'
 import useSWR from 'swr'
 
-export const apiUrl = "https://adham-new-app.herokuapp.com/api/v1/cookie_stands/"
+export const apiUrl = process.env.NEXT_PUBLIC_API_URL_HOOKS
 
 import { useAuth } from '../contexts/auth'
 
