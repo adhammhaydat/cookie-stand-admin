@@ -1,8 +1,8 @@
 
-export default function Footer(props) {
+export default function Footer() {
     return (
-        <footer className="bg-green-400  w-screen p0 h-15 flex items-start my-28">
-        <h2 className="p-3 text-1xl"> {props.cookies.length} Locations World Wide</h2>
+        <footer className="flex items-start w-screen bg-green-400 p0 h-15 my-28">
+        <h2 className="p-3 text-1xl">  Locations World Wide</h2>
       </footer>
     )
 }
