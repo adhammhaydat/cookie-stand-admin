@@ -20,10 +20,10 @@ export default function Main() {
     <div>
     <Header logout={logout}/>
       <div className="flex flex-col items-center justify-center bg-green-100 my-28">
-      <CreateForm createResource={createResource}  />
+      <CreateForm createResource={createResource} loading={loading} />
         <section className="w-full">
 
-         {resources?<Report_table resources={resources} deleteResource={deleteResource} />:<h1>No Cookies Stand Available</h1>}
+         {resources?<Report_table resources={resources} deleteResource={deleteResource} loading={loading} />:<h1>No Cookies Stand Available</h1>}
           
         </section>
         <Footer cookies={cookies} />

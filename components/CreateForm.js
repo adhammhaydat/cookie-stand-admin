@@ -1,6 +1,6 @@
-
-export default function CreateForm({createResource}) {
-    
+import Loding from  '../components/Loding'
+export default function CreateForm({createResource,loading}) {
+  if (loading) return <Loding />
   function submitHandler(e) {
         e.preventDefault();
         let stand={
